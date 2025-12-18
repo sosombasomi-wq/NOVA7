@@ -4,7 +4,7 @@
     <link rel="icon" type="image/png" href="nova 2.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOVA INFINITY 7</title>
+    <title>NOVA OS - COMMANDER MODE</title>
     <link rel="manifest" href="manifest.json">
 
     <!-- Three.js Library -->
@@ -54,7 +54,7 @@
             opacity: 0; visibility: hidden; transition: opacity 1s ease;
         }
 
-        /* --- 3. PRO CURSOR SYSTEM (FIXED Z-INDEX) --- */
+        /* --- 3. PRO CURSOR SYSTEM --- */
         .cursor-dot {
             position: fixed; top: 0; left: 0; width: 8px; height: 8px; background: white;
             border-radius: 50%; z-index: 9999999 !important; pointer-events: none;
@@ -207,36 +207,22 @@
         .dock-item:nth-child(4) { background: linear-gradient(135deg, #141E30, #243B55); border-color: #ffffff; }
         .dock-item:hover { transform: translateY(-15px) scale(1.15); box-shadow: 0 10px 20px rgba(0,0,0,0.4); border-color: rgba(255,255,255,0.5); }
 
-        /* --- 7. UNIVERSE BUTTON --- */
-        .universe-btn {
-            position: fixed; bottom: 30px; right: 30px;
-            width: 70px; height: 70px; border-radius: 50%;
-            background: #000; border: none; z-index: 990;
-            display: flex; justify-content: center; align-items: center;
-            box-shadow: 0 0 20px rgba(112, 0, 255, 0.5);
-            transition: transform 0.3s;
-        }
-        .universe-btn::before {
-            content: ''; position: absolute; inset: -3px; border-radius: 50%;
-            background: conic-gradient(var(--primary-cyan), var(--primary-purple), var(--primary-pink), var(--primary-cyan));
-            z-index: -1; animation: ringSpin 4s linear infinite; filter: blur(5px);
-        }
+        /* --- 7. UI CONTROLS --- */
+        .universe-btn { position: fixed; bottom: 30px; right: 30px; width: 70px; height: 70px; border-radius: 50%; background: #000; border: none; z-index: 990; display: flex; justify-content: center; align-items: center; box-shadow: 0 0 20px rgba(112, 0, 255, 0.5); transition: transform 0.3s; }
+        .universe-btn::before { content: ''; position: absolute; inset: -3px; border-radius: 50%; background: conic-gradient(var(--primary-cyan), var(--primary-purple), var(--primary-pink), var(--primary-cyan)); z-index: -1; animation: ringSpin 4s linear infinite; filter: blur(5px); }
         .universe-btn:hover { transform: scale(1.1); }
-        .universe-btn:hover::before { animation-duration: 0.5s; filter: blur(8px); }
         .universe-btn::after { content: ''; position: absolute; inset: 3px; background: #080808; border-radius: 50%; z-index: 0; }
-        .universe-btn i { z-index: 2; font-size: 1.8rem; color: white; transition: 0.3s; }
+        .universe-btn i { z-index: 2; font-size: 1.8rem; color: white; }
         .universe-btn.active { box-shadow: 0 0 40px var(--primary-purple), 0 0 80px var(--primary-cyan); }
         @keyframes ringSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         
-        /* --- 8. UI CONTROLS --- */
         .login-trigger { position: absolute; top: 30px; right: 40px; font-size: 1.5rem; color: rgba(255,255,255,0.6); background: transparent; border: 1px solid rgba(255,255,255,0.1); width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; transition: 0.3s; z-index: 900; }
         .login-trigger:hover { color: var(--primary-cyan); border-color: var(--primary-cyan); box-shadow: 0 0 20px rgba(0, 240, 255, 0.3); transform: rotate(15deg); }
         .login-trigger.logout-mode { border-color: var(--primary-pink); color: var(--primary-pink); }
-
         .sound-toggle { position: absolute; top: 30px; left: 40px; font-size: 1.2rem; color: rgba(255,255,255,0.4); z-index: 900; transition: 0.3s; }
         .sound-toggle:hover, .sound-toggle.on { color: var(--primary-cyan); text-shadow: 0 0 10px var(--primary-cyan); }
 
-        /* --- 9. MODALS --- */
+        /* --- 8. MODALS --- */
         .login-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); backdrop-filter: blur(10px); z-index: 9990; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s; }
         .login-overlay.active { display: flex; opacity: 1; }
         .login-box { position: relative; width: 400px; background: #000; padding: 3px; border-radius: 30px; overflow: hidden; transform: scale(0.9); transition: transform 0.4s; }
@@ -260,35 +246,16 @@
         .tts-btn { background: transparent; border: 1px solid var(--primary-cyan); color: var(--primary-cyan); padding: 8px 20px; border-radius: 20px; display: flex; align-items: center; gap: 10px; transition: 0.3s; font-size: 0.9rem; }
         .tts-btn:hover { background: var(--primary-cyan); color: #000; }
 
-        /* --- 10. CUSTOM CONTEXT MENU --- */
-        #context-menu {
-            display: none; 
-            position: absolute;
-            z-index: 100000;
-            width: 220px;
-            background: #050505;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
-            cursor: pointer !important;
-        }
-        #context-menu::before {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-            background: conic-gradient(transparent, transparent, transparent, var(--primary-cyan), var(--primary-purple), var(--primary-pink));
-            animation: rotate 2s linear infinite;
-        }
-        #context-menu::after {
-            content: ''; position: absolute; inset: 2px; background: #111; border-radius: 10px; z-index: 0;
-        }
+        /* --- 9. CUSTOM CONTEXT MENU --- */
+        #context-menu { display: none; position: absolute; z-index: 100000; width: 220px; background: #050505; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.8); cursor: pointer !important; }
+        #context-menu::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: conic-gradient(transparent, transparent, transparent, var(--primary-cyan), var(--primary-purple), var(--primary-pink)); animation: rotate 2s linear infinite; }
+        #context-menu::after { content: ''; position: absolute; inset: 2px; background: #111; border-radius: 10px; z-index: 0; }
         .ctx-items { position: relative; z-index: 1; padding: 8px 0; display: flex; flex-direction: column; }
-        .ctx-item {
-            padding: 12px 20px; font-family: 'Outfit', sans-serif; color: #eee; cursor: pointer !important;
-            transition: 0.2s; display: flex; align-items: center; gap: 10px; text-decoration: none; border-left: 2px solid transparent;
-        }
+        .ctx-item { padding: 12px 20px; font-family: 'Outfit', sans-serif; color: #eee; cursor: pointer !important; transition: 0.2s; display: flex; align-items: center; gap: 10px; text-decoration: none; border-left: 2px solid transparent; }
         .ctx-item:hover { background: rgba(0, 240, 255, 0.15); color: var(--primary-cyan); border-left: 2px solid var(--primary-cyan); }
         .ctx-hr { height: 1px; background: rgba(255,255,255,0.1); margin: 5px 0; }
 
-        /* --- 11. NOVA TERMINAL (POWER SHELL) --- */
+        /* --- 10. NOVA TERMINAL (CONTROL CENTER) --- */
         #nova-terminal {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(5, 5, 5, 0.98); color: var(--primary-cyan);
@@ -301,28 +268,6 @@
         .term-input-line { display: flex; align-items: center; }
         .term-prompt { color: var(--primary-pink); margin-right: 10px; font-weight: bold; }
         #term-input { background: transparent; border: none; color: var(--primary-cyan); font-family: inherit; font-size: inherit; flex: 1; outline: none; }
-
-        /* --- 12. SPECIAL RECT (THE KHAYT BOX) - RESTORED & TRANSLATED --- */
-        .special-rect-container {
-            position: relative; width: 350px; height: 140px; background: #050505; border-radius: 20px; overflow: hidden;
-            display: flex; justify-content: center; align-items: center; margin-top: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            transition: transform 0.3s;
-        }
-        .special-rect-container:hover { transform: scale(1.05); }
-        .special-rect-container::before {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-            background: conic-gradient(transparent, transparent, transparent, var(--primary-cyan), var(--primary-purple), var(--primary-pink));
-            animation: rotate 4s linear infinite;
-        }
-        .special-rect-container::after { content: ''; position: absolute; inset: 3px; background: #080808; border-radius: 17px; z-index: 1; }
-        .special-content {
-            position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center;
-            gap: 8px; font-family: 'Outfit', sans-serif;
-        }
-        .special-content h3 { color: white; font-weight: 700; font-size: 1.4rem; margin: 0; text-shadow: 0 0 10px rgba(255,255,255,0.3); }
-        .special-content p { color: #888; font-size: 0.9rem; margin: 0; }
-        .status-light { width: 8px; height: 8px; background: var(--primary-cyan); border-radius: 50%; box-shadow: 0 0 10px var(--primary-cyan); animation: blink 2s infinite; }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
     </style>
 </head>
@@ -346,7 +291,7 @@
     <!-- Nova PowerShell Interface -->
     <div id="nova-terminal">
         <div class="term-header">
-            NOVA OS [Version 7.0.2 ULTIMATE]<br>
+            NOVA CONTROL CENTER [v7.1]<br>
             (c) Nova Infinity Corp. All rights reserved.<br>
             <br>
             System Secured. Press ESC to exit.<br>
@@ -354,7 +299,7 @@
         </div>
         <div id="term-output-area"></div>
         <div class="term-input-line">
-            <span class="term-prompt">C:\Users\Commander></span>
+            <span class="term-prompt">Commander@Nova:~$</span>
             <input type="text" id="term-input" autocomplete="off" spellcheck="false">
         </div>
     </div>
@@ -450,8 +395,8 @@
             <a href="https://chatgpt.com" class="dock-item hover-trigger"><i class="fas fa-robot" style="color:#10a37f;"></i></a>
             <a href="https://github.com" class="dock-item hover-trigger"><i class="fab fa-github" style="color:#fff;"></i></a>
         </div>
-
-        
+        <!-- Special Rect Removed as Requested -->
+    </div>
 
     <script>
         /* --- 1. CONFIG & RESTORE STATE --- */
@@ -532,16 +477,16 @@
         function openLogin() { loginOverlay.style.display = 'flex'; playSound('start'); setTimeout(() => { loginOverlay.classList.add('active'); document.getElementById('username-input').focus(); }, 10); }
         function closeLogin() { loginOverlay.classList.remove('active'); setTimeout(() => loginOverlay.style.display = 'none', 300); }
         function checkEnter(e) { if (e.key === "Enter") performLogin(); }
-        function performLogin() {
-            const btn = document.querySelector('.login-btn'); const user = document.getElementById('username-input').value || "User";
-            btn.innerText = "SAVING DEVICE..."; playSound('click');
+        function performLogin(usernameOverride) {
+            const btn = document.querySelector('.login-btn'); const user = usernameOverride || document.getElementById('username-input').value || "User";
+            if(!usernameOverride) { btn.innerText = "SAVING DEVICE..."; playSound('click'); }
             setTimeout(() => {
                 localStorage.setItem('nova_device_id', 'authorized_' + user);
-                btn.innerText = "ACCESS GRANTED"; btn.style.background = "#10a37f"; playSound('start');
+                if(!usernameOverride) { btn.innerText = "ACCESS GRANTED"; btn.style.background = "#10a37f"; playSound('start'); }
                 setTimeout(() => {
-                    isLoggedIn = true; updateAuthUI(); closeLogin();
+                    isLoggedIn = true; updateAuthUI(); if(!usernameOverride) closeLogin();
                     document.getElementById('sub-logo').innerText = `WELCOME ${user.toUpperCase()}`;
-                    setTimeout(() => { btn.innerText = "AUTHORIZE DEVICE"; btn.style.background = ""; }, 500);
+                    if(!usernameOverride) setTimeout(() => { btn.innerText = "AUTHORIZE DEVICE"; btn.style.background = ""; }, 500);
                 }, 1000);
             }, 1500);
         }
@@ -551,7 +496,7 @@
             if(!suppressSound) playSound('click');
             if (engine === 'nova' && !novaActivated) { document.getElementById('nova-onboarding').style.display = 'flex'; setTimeout(() => document.getElementById('nova-onboarding').classList.add('active'), 10); return; }
             currentEngine = engine; localStorage.setItem('nova_engine', engine);
-            document.querySelectorAll('.engine-btn').forEach(btn => btn.classList.remove('active')); element.classList.add('active');
+            if(element) { document.querySelectorAll('.engine-btn').forEach(btn => btn.classList.remove('active')); element.classList.add('active'); }
             const form = document.getElementById('search-form'); const input = document.getElementById('search-input');
             if(engine === 'google') { form.action = "https://www.google.com/search"; input.name="q"; input.placeholder = "Search Google System..."; }
             else if(engine === 'duckduckgo') { form.action = "https://duckduckgo.com/"; input.name="q"; input.placeholder = "Secure Search..."; }
@@ -562,7 +507,7 @@
         function activateNova() { novaActivated = true; localStorage.setItem('nova_is_activated', 'true'); document.getElementById('nova-onboarding').classList.remove('active'); setTimeout(() => { document.getElementById('nova-onboarding').style.display = 'none'; setEngine('nova', document.querySelector(`.engine-btn[data-engine="nova"]`)); playSound('start'); }, 400); }
 
         function handleSearch(e) {
-            e.preventDefault(); const val = document.getElementById('search-input').value; if(!val) return;
+            if(e) e.preventDefault(); const val = document.getElementById('search-input').value; if(!val) return;
             if (currentEngine === 'nova') processNovaRequest(val); else engageHyperdrive(e);
         }
         function processNovaRequest(query) {
@@ -625,7 +570,6 @@
                 const sun = new THREE.Mesh(new THREE.SphereGeometry(50, 32, 32), new THREE.MeshBasicMaterial({ color: 0xffaa00 })); 
                 sun.add(new THREE.Mesh(new THREE.SphereGeometry(60, 32, 32), new THREE.MeshBasicMaterial({ color: 0xffdd00, transparent: true, opacity: 0.3 }))); solarGroup.add(sun);
                 
-                // FULL PLANET DATA RESTORED
                 const planetData = [
                     { color: 0xaaaaaa, size: 6, dist: 90, speed: 0.02 },
                     { color: 0xff9900, size: 12, dist: 130, speed: 0.015 },
@@ -658,7 +602,7 @@
         const vBtn = document.getElementById('voice-btn'); const sInp = document.getElementById('search-input');
         if (window.webkitSpeechRecognition || window.SpeechRecognition) { const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition; const rec = new SpeechRecognition(); rec.lang = 'en-US'; vBtn.onclick = (e) => { e.preventDefault(); playSound('click'); rec.start(); }; rec.onstart = () => { vBtn.classList.add('recording'); sInp.placeholder = "Listening..."; }; rec.onend = () => { vBtn.classList.remove('recording'); sInp.placeholder = "Type to search..."; if(sInp.value) handleSearch(new Event('submit')); }; rec.onresult = (e) => sInp.value = e.results[0][0].transcript; }
 
-        /* --- 8. CUSTOM CONTEXT MENU & TERMINAL --- */
+        /* --- 8. CUSTOM CONTEXT MENU & TERMINAL CONTROLLER --- */
         const contextMenu = document.getElementById('context-menu');
         const terminal = document.getElementById('nova-terminal');
         const termInput = document.getElementById('term-input');
@@ -681,18 +625,50 @@
         termInput.addEventListener('keydown', (e) => {
             if (e.key === "Enter") {
                 const cmd = termInput.value.trim().toLowerCase();
-                const div = document.createElement('div'); div.className = 'term-output'; div.innerText = `C:\\Users\\Commander> ${cmd}`; div.style.color = '#fff'; termOutput.appendChild(div);
+                const div = document.createElement('div'); div.className = 'term-output'; div.innerText = `Commander@Nova:~$ ${cmd}`; div.style.color = '#fff'; termOutput.appendChild(div);
                 
-                if (cmd === 'help') { const d = document.createElement('div'); d.className='term-output'; d.innerText=" - help: Show list\n - clear: Clear screen\n - date: Show time\n - reboot: Reload\n - exit: Close terminal\n - matrix: Hack mode"; d.style.color='#aaa'; termOutput.appendChild(d); }
+                // --- THE ULTIMATE CONTROL LOGIC ---
+                if (cmd === 'help') { 
+                    const d = document.createElement('div'); d.className='term-output'; 
+                    d.innerText=" SYSTEM COMMANDS:\n - mode [stars/solar/2d]: Change Background\n - engine [google/nova/bing]: Change Engine\n - search [text]: Perform Search\n - login [name]: Auth Override\n - sound [on/off]: Toggle Audio\n - reboot: Reload System\n - exit: Close Terminal"; 
+                    d.style.color='#aaa'; termOutput.appendChild(d); 
+                }
+                else if (cmd.startsWith('mode ')) {
+                    const m = cmd.replace('mode ', '');
+                    if(['2d','stars','solar'].includes(m)) { switchMode(m); addToTerm(`>> Reality switched to: ${m.toUpperCase()}`, 'lime'); }
+                    else addToTerm(`>> Unknown mode: ${m}`, 'red');
+                }
+                else if (cmd.startsWith('engine ')) {
+                    const eng = cmd.replace('engine ', '');
+                    const btn = document.querySelector(`.engine-btn[data-engine="${eng}"]`);
+                    if(btn) { setEngine(eng, btn); addToTerm(`>> Engine set to: ${eng.toUpperCase()}`, 'lime'); }
+                    else addToTerm(`>> Engine not found: ${eng}`, 'red');
+                }
+                else if (cmd.startsWith('search ')) {
+                    const q = cmd.replace('search ', '');
+                    addToTerm(`>> Searching for: ${q}...`, 'cyan');
+                    document.getElementById('search-input').value = q;
+                    setTimeout(() => { terminal.classList.remove('active'); handleSearch(null); }, 800);
+                }
+                else if (cmd.startsWith('login ')) {
+                    const name = cmd.replace('login ', '');
+                    performLogin(name);
+                    addToTerm(`>> User Authorized: ${name.toUpperCase()}`, 'lime');
+                }
+                else if (cmd === 'sound on') { toggleSound(true); addToTerm('>> Audio Systems: ONLINE', 'lime'); }
+                else if (cmd === 'sound off') { toggleSound(false); addToTerm('>> Audio Systems: OFFLINE', 'orange'); }
                 else if (cmd === 'clear' || cmd === 'cls') { termOutput.innerHTML = ''; }
-                else if (cmd === 'date') { const d = document.createElement('div'); d.className='term-output'; d.innerText=new Date().toString(); d.style.color='#00f0ff'; termOutput.appendChild(d); }
-                else if (cmd === 'reboot') { const d = document.createElement('div'); d.className='term-output'; d.innerText="Rebooting..."; d.style.color='red'; termOutput.appendChild(d); setTimeout(() => location.reload(), 1000); }
+                else if (cmd === 'reboot') { addToTerm(">> System Rebooting...", 'red'); setTimeout(() => location.reload(), 1000); }
                 else if (cmd === 'exit') { terminal.classList.remove('active'); }
-                else if (cmd === 'matrix') { document.body.style.filter = "hue-rotate(90deg) contrast(1.2)"; const d = document.createElement('div'); d.className='term-output'; d.innerText="Matrix Mode Activated"; d.style.color='green'; termOutput.appendChild(d); }
+                else { addToTerm(`>> Command not found: ${cmd}`, 'red'); }
                 
                 termInput.value = ''; terminal.scrollTop = terminal.scrollHeight;
             }
         });
+        
+        function addToTerm(txt, col) {
+            const d = document.createElement('div'); d.className='term-output'; d.innerText=txt; d.style.color=col; termOutput.appendChild(d);
+        }
     </script>
 </body>
 </html>
